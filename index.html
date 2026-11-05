@@ -1,0 +1,405 @@
+<div class="item sofa">🛋️</div>
+<div class="item bed">🛏️</div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Pixel Game</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f8dce9;font-family:monospace;color:#70445d;overflow:hidden}
+header{height:48px;background:#f5b9d1;display:flex;align-items:center;justify-content:center;font-weight:bold;letter-spacing:2px}
+#rooms{display:flex;width:100vw;height:calc(100vh - 105px);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.room{position:relative;flex:0 0 100vw;height:100%;overflow:hidden;scroll-snap-align:start;background:#ffe9dc}
+.wall{position:absolute;inset:0 0 35% 0;background:#ffe8ef;border-bottom:8px solid #c98b83}
+.floor{position:absolute;inset:65% 0 0;background:#dcae91;background-image:linear-gradient(90deg,#00000008 1px,transparent 1px),linear-gradient(#00000008 1px,transparent 1px);background-size:28px 28px}
+.window{position:absolute;left:8%;top:10%;width:27%;height:30%;background:#bde8ef;border:8px solid #fff7ed;box-shadow:inset 0 0 0 3px #d18da8}
+.window:before{content:"";position:absolute;left:48%;height:100%;width:5px;background:#fff7ed}
+.window:after{content:"";position:absolute;top:48%;height:5px;width:100%;background:#fff7ed}
+.picture{position:absolute;right:12%;top:13%;width:19%;height:20%;border:7px solid #bd826d;background:#b5d99e;box-shadow:inset 0 0 0 5px #f7d6a7}
+.picture:after{content:"";display:block;width:22px;height:22px;background:#f5a8bc;margin:12px auto}
+.pixel{position:absolute;image-rendering:pixelated;touch-action:none;cursor:grab;user-select:none}
+.pixel svg{width:100%;height:100%;display:block;shape-rendering:crispEdges}
+#girl{position:absolute;left:43%;top:48%;width:65px;height:125px;z-index:20;touch-action:none;cursor:grab}
+.hair{position:absolute;top:0;left:8px;width:49px;height:47px;background:#75452f;box-shadow:0 12px #75452f, -5px 9px #75452f,5px 9px #75452f}
+.face{position:absolute;top:15px;left:15px;width:36px;height:33px;background:#f4c49f}
+.eye{position:absolute;top:13px;width:5px;height:7px;background:#4595c7}
+.eye.one{left:6px}.eye.two{right:6px}
+.bodygirl{position:absolute;top:48px;left:10px;width:47px;height:37px;background:#ec55a1}
+.pants{position:absolute;top:83px;left:12px;width:43px;height:33px;background:#5387d1}
+.shoe{position:absolute;top:113px;left:9px;width:23px;height:9px;background:#f28bb9;box-shadow:24px 0 #f28bb9}
+#bubble{position:absolute;z-index:40;top:22%;left:50%;transform:translateX(-50%);background:white;border:3px solid #e99ab9;padding:9px 12px;max-width:80%;display:none;font-size:12px;box-shadow:4px 4px #d88da8}
+#toolbar{height:57px;background:#f5b9d1;display:flex;align-items:center;justify-content:space-around}
+button{border:0;background:#fff0f6;color:#9d5577;padding:10px 14px;border-radius:12px;font-family:monospace;font-weight:bold}
+#mode{width:48px;height:43px;font-size:22px;background:#fff}
+.roomname{position:absolute;top:8px;left:50%;transform:translateX(-50%);background:#fff8;padding:5px 12px;border-radius:10px;font-size:11px}
+</style>
+</head>
+<body>
+<header>♡ YOUR PIXEL GAME ♡</header>
+<div id="rooms">
+
+<!-- SALON -->
+<section class="room">
+<div class="wall"></div><div class="floor"></div><div class="window"></div><div class="picture"></div>
+<div class="roomname">SALON</div>
+
+<div class="pixel" style="left:9%;top:49%;width:145px;height:92px">
+<svg viewBox="0 0 145 92">
+<rect x="8" y="22" width="129" height="55" fill="#a74d75"/>
+<rect x="0" y="32" width="145" height="42" fill="#d96e9b"/>
+<rect x="9" y="17" width="127" height="34" fill="#f19cbd"/>
+<rect x="17" y="23" width="48" height="23" fill="#ffd2df"/>
+<rect x="80" y="23" width="48" height="23" fill="#ffd2df"/>
+<rect x="9" y="74" width="12" height="15" fill="#754b43"/>
+<rect x="124" y="74" width="12" height="15" fill="#754b43"/>
+</svg></div>
+
+<div class="pixel" style="left:40%;top:64%;width:100px;height:48px">
+<svg viewBox="0 0 100 48">
+<rect x="5" y="10" width="90" height="24" fill="#a65e43"/>
+<rect x="0" y="5" width="100" height="10" fill="#e4a66e"/>
+<rect x="12" y="34" width="8" height="14" fill="#80503b"/>
+<rect x="80" y="34" width="8" height="14" fill="#80503b"/>
+<rect x="40" y="15" width="20" height="8" fill="#f6d6a1"/>
+</svg></div>
+
+<div class="pixel" style="left:72%;top:42%;width:75px;height:115px">
+<svg viewBox="0 0 75 115">
+<rect x="5" y="5" width="65" height="105" fill="#9d654e"/>
+<rect x="10" y="10" width="55" height="95" fill="#e7b88a"/>
+<rect x="10" y="39" width="55" height="6" fill="#9d654e"/>
+<rect x="10" y="72" width="55" height="6" fill="#9d654e"/>
+<rect x="19" y="18" width="9" height="18" fill="#e96d91"/>
+<rect x="33" y="17" width="10" height="19" fill="#72a7c9"/>
+<rect x="48" y="20" width="10" height="16" fill="#8dbd83"/>
+<rect x="18" y="49" width="30" height="17" fill="#e9a3ba"/>
+<rect x="49" y="50" width="10" height="15" fill="#f3d17f"/>
+</svg></div>
+
+<div class="pixel" style="left:78%;top:67%;width:47px;height:57px">
+<svg viewBox="0 0 47 57">
+<rect x="13" y="25" width="22" height="30" fill="#bd7753"/>
+<rect x="17" y="18" width="14" height="10" fill="#8bca85"/>
+<rect x="5" y="9" width="15" height="18" fill="#58a76a"/>
+<rect x="25" y="2" width="17" height="22" fill="#70b979"/>
+<rect x="17" y="0" width="10" height="20" fill="#49985d"/>
+</svg></div>
+
+<div class="pixel" style="left:18%;top:81%;width:145px;height:25px">
+<svg viewBox="0 0 145 25"><rect width="145" height="25" fill="#d77eaa"/><rect x="8" y="5" width="129" height="15" fill="#f6b6d0"/></svg>
+</div>
+<div id="girl"><div class="hair"></div><div class="face"><i class="eye one"></i><i class="eye two"></i></div><div class="bodygirl"></div><div class="pants"></div><div class="shoe"></div></div>
+</section>
+
+<!-- CHAMBRE -->
+<section class="room">
+<div class="wall"></div><div class="floor"></div><div class="window"></div><div class="picture"></div>
+<div class="roomname">CHAMBRE</div>
+
+<div class="pixel" style="left:12%;top:48%;width:190px;height:112px">
+<svg viewBox="0 0 190 112">
+<rect x="0" y="24" width="190" height="80" fill="#9d634e"/>
+<rect x="7" y="16" width="176" height="70" fill="#eaa2bd"/>
+<rect x="14" y="22" width="162" height="55" fill="#fff0e8"/>
+<rect x="22" y="27" width="58" height="25" fill="#b6d5eb"/>
+<rect x="91" y="27" width="72" height="25" fill="#b6d5eb"/>
+<rect x="10" y="75" width="170" height="12" fill="#d77a9e"/>
+<rect x="10" y="94" width="10" height="18" fill="#70483c"/>
+<rect x="170" y="94" width="10" height="18" fill="#70483c"/>
+</svg></div>
+
+<div class="pixel" style="left:68%;top:49%;width:75px;height:120px">
+<svg viewBox="0 0 75 120">
+<rect width="75" height="120" fill="#9b6249"/>
+<rect x="6" y="6" width="63" height="108" fill="#dba77b"/>
+<rect x="10" y="10" width="55" height="47" fill="#f4d1a7"/>
+<rect x="10" y="62" width="55" height="47" fill="#f4d1a7"/>
+<rect x="36" y="29" width="5" height="9" fill="#9b6249"/>
+<rect x="36" y="81" width="5" height="9" fill="#9b6249"/>
+</svg></div>
+
+<div class="pixel" style="left:8%;top:77%;width:75px;height:50px">
+<svg viewBox="0 0 75 50">
+<rect x="5" y="8" width="65" height="30" fill="#ad7255"/>
+<rect x="0" y="5" width="75" height="9" fill="#e4b47f"/>
+<rect x="8" y="38" width="8" height="12" fill="#80503b"/>
+<rect x="60" y="38" width="8" height="12" fill="#80503b"/>
+</svg></div>
+
+<div class="pixel" style="left:78%;top:75%;width:55px;height:55px">
+<svg viewBox="0 0 55 55">
+<rect x="8" y="20" width="39" height="30" fill="#b87c59"/>
+<rect x="13" y="12" width="29" height="12" fill="#f1c58f"/>
+<rect x="16" y="0" width="8" height="17" fill="#65a96b"/>
+<rect x="27" y="4" width="10" height="14" fill="#8cc77d"/>
+</svg></div>
+</section>
+
+<!-- CUISINE -->
+<section class="room">
+<div class="wall"></div><div class="floor"></div><div class="window"></div>
+<div class="roomname">CUISINE</div>
+
+<div class="pixel" style="left:8%;top:43%;width:115px;height:125px">
+<svg viewBox="0 0 115 125">
+<rect width="115" height="125" fill="#b3d9e8"/>
+<rect x="7" y="6" width="101" height="112" fill="#eaf6f5"/>
+<rect x="12" y="12" width="91" height="45" fill="#c8e4e8"/>
+<rect x="12" y="64" width="91" height="48" fill="#c8e4e8"/>
+<rect x="89" y="25" width="5" height="18" fill="#7b9ca6"/>
+<rect x="89" y="78" width="5" height="18" fill="#7b9ca6"/>
+</svg></div>
+
+<div class="pixel" style="left:40%;top:46%;width:180px;height:95px">
+<svg viewBox="0 0 180 95">
+<rect x="0" y="0" width="180" height="20" fill="#9b6048"/>
+<rect x="5" y="20" width="170" height="70" fill="#e6b68a"/>
+<rect x="12" y="25" width="72" height="58" fill="#f7d4aa"/>
+<rect x="94" y="25" width="72" height="58" fill="#f7d4aa"/>
+<rect x="43" y="44" width="5" height="14" fill="#93634e"/>
+<rect x="126" y="44" width="5" height="14" fill="#93634e"/>
+</svg></div>
+
+<div class="pixel" style="left:49%;top:72%;width:105px;height:63px">
+<svg viewBox="0 0 105 63">
+<rect x="4" y="5" width="97" height="30" fill="#ad7655"/>
+<rect x="0" y="0" width="105" height="12" fill="#e9bb8c"/>
+<rect x="12" y="35" width="9" height="28" fill="#85533e"/>
+<rect x="84" y="35" width="9" height="28" fill="#85533e"/>
+<rect x="40" y="0" width="24" height="10" fill="#e45d71"/>
+<rect x="47" y="0" width="10" height="10" fill="#80b85c"/>
+</svg></div>
+
+<div class="pixel" style="left:77%;top:72%;width:75px;height:70px">
+<svg viewBox="0 0 75 70">
+<rect x="5" y="20" width="65" height="42" fill="#a66b4c"/>
+<rect x="0" y="15" width="75" height="12" fill="#e9b57f"/>
+<rect x="10" y="62" width="8" height="8" fill="#80503b"/>
+<rect x="57" y="62" width="8" height="8" fill="#80503b"/>
+<rect x="27" y="0" width="20" height="20" fill="#e35b69"/>
+<rect x="32" y="0" width="10" height="7" fill="#77ad63"/>
+</svg></div>
+</section>
+</div>
+
+<div id="bubble"></div>
+<div id="toolbar">
+<button onclick="goRoom(0)">Salon</button>
+<button onclick="goRoom(1)">Chambre</button>
+<button onclick="goRoom(2)">Cuisine</button>
+<button id="mode" onclick="toggleMode()">🪑</button>
+</div>
+
+<script>
+const rooms=document.getElementById('rooms');
+const mode=document.getElementById('mode');
+const girl=document.getElementById('girl');
+const bubble=document.getElementById('bubble');
+let objectMode=false;
+let dragging=null,startX=0,startY=0,moved=false;
+let line=0,timer=null;
+const messages=[
+"J’ai passé une très bonne journée.",
+"Je suis heureuse de te voir.",
+"La nuit est le meilleur moment de la journée, tu trouves pas ?",
+"Nous deux, on forme une très bonne équipe.",
+"C’est super de se revoir."
+];
+
+function goRoom(n){
+rooms.scrollTo({left:n*innerWidth,behavior:'smooth'});
+}
+function toggleMode(){
+objectMode=!objectMode;
+mode.textContent=objectMode?'✕':'🪑';
+}
+
+document.querySelectorAll('.pixel').forEach(item=>{
+item.addEventListener('pointerdown',e=>{
+if(!objectMode)return;
+dragging=item;moved=false;
+startX=e.clientX;startY=e.clientY;
+item.setPointerCapture(e.pointerId);
+});
+item.addEventListener('pointermove',e=>{
+if(dragging!==item)return;
+let dx=e.clientX-startX,dy=e.clientY-startY;
+if(Math.abs(dx)+Math.abs(dy)>3)moved=true;
+const room=item.closest('.room');
+const r=room.getBoundingClientRect();
+let left=item.offsetLeft+dx,top=item.offsetTop+dy;
+item.style.left=Math.max(0,Math.min(r.width-item.offsetWidth,left))+'px';
+item.style.top=Math.max(0,Math.min(r.height-item.offsetHeight,top))+'px';
+startX=e.clientX;startY=e.clientY;
+});
+item.addEventListener('pointerup',()=>{if(dragging===item)dragging=null});
+});
+
+girl.addEventListener('pointerdown',e=>{
+if(objectMode)return;
+dragging=girl;moved=false;
+startX=e.clientX;startY=e.clientY;
+girl.setPointerCapture(e.pointerId);
+});
+girl.addEventListener('pointermove',e=>{
+if(dragging!==girl)return;
+let dx=e.clientX-startX,dy=e.clientY-startY;
+if(Math.abs(dx)+Math.abs(dy)>4)moved=true;
+const room=girl.closest('.room');
+let left=girl.offsetLeft+dx,top=girl.offsetTop+dy;
+girl.style.left=Math.max(0,Math.min(room.clientWidth-girl.offsetWidth,left))+'px';
+girl.style.top=Math.max(0,Math.min(room.clientHeight-girl.offsetHeight,top))+'px';
+startX=e.clientX;startY=e.clientY;
+});
+girl.addEventListener('pointerup',()=>{
+if(dragging===girl){
+dragging=null;
+if(!moved&&!objectMode)sayNext();
+}
+});
+
+function sayNext(){
+clearInterval(timer);
+bubble.style.display='block';
+const message=messages[line%messages.length];
+line++;
+let i=0;bubble.textContent='';
+timer=setInterval(()=>{
+bubble.textContent+=message[i]||'';
+i++;
+if(i>message.length){
+clearInterval(timer);
+setTimeout(()=>bubble.style.display='none',2200);
+}
+},42);
+}
+</script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>YOUR PIXEL GAME ♡</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:#ffe7f3;color:#793e68;font-family:"Courier New",monospace;overflow:hidden;user-select:none}
+header{height:65px;background:#ffb6d8;border-bottom:4px solid #ee91bd;display:flex;align-items:center;justify-content:space-between;padding:8px 12px;gap:8px}
+.logo{font-weight:bold;font-size:clamp(13px,4vw,21px);text-shadow:2px 2px white}
+.small{font-size:10px;margin-top:4px}
+.modeinfo{text-align:right;font-size:10px;line-height:1.5}
+#modeButton{width:47px;height:47px;flex-shrink:0;border:3px solid white;border-radius:50%;background:#f35ca8;color:white;font-size:25px;box-shadow:0 4px #ce478a}
+#viewport{height:calc(100dvh - 125px);overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none}
+#viewport::-webkit-scrollbar{display:none}
+#house{height:100%;width:300vw;display:flex}
+.room{position:relative;width:100vw;height:100%;flex-shrink:0;overflow:hidden;scroll-snap-align:start}
+.wall{position:absolute;inset:0 0 27%;background-color:#ffe3f0;background-image:linear-gradient(#ffc6df 1px,transparent 1px),linear-gradient(90deg,#ffc6df 1px,transparent 1px);background-size:24px 24px}
+.floor{position:absolute;bottom:0;height:28%;width:100%;background-color:#ffcce4;background-image:linear-gradient(#f4acd0 2px,transparent 2px),linear-gradient(90deg,#f4acd0 2px,transparent 2px);background-size:38px 27px;border-top:7px solid #fff4fa}
+.roomname{position:absolute;top:5%;left:50%;transform:translateX(-50%);z-index:2;background:#fff7fb;border:3px solid #f4a3ca;border-radius:8px;padding:6px 10px;font-weight:bold;font-size:12px;white-space:nowrap}
+.window{position:absolute;left:10%;top:15%;width:26%;height:23%;background:#bcecff;border:6px solid white;outline:3px solid #eaa0c9;box-shadow:inset 0 0 0 3px #9bdcf6}
+.window:before{content:"";position:absolute;left:48%;top:0;bottom:0;width:4px;background:white}
+.window:after{content:"";position:absolute;top:48%;left:0;right:0;height:4px;background:white}
+.sun{position:absolute;right:12%;top:12%;font-size:27px}
+.item{position:absolute;z-index:5;display:flex;flex-direction:column;align-items:center;cursor:grab;touch-action:none}
+.item .emoji{font-family:sans-serif;font-size:clamp(42px,12vw,72px);filter:drop-shadow(3px 4px #e4a1c4);line-height:1.1}
+.item label{background:white;border:2px solid #f4a3ca;border-radius:5px;padding:3px 5px;font-size:9px;pointer-events:none}
+.girl{position:absolute;left:38%;top:43%;width:92px;height:155px;z-index:10;touch-action:none;cursor:pointer}
+.girl *{pointer-events:none}
+.hair{position:absolute;top:0;left:12px;width:68px;height:67px;background:#75422e;border:3px solid #5c3025;border-radius:48% 48% 30% 30%;z-index:1}
+.face{position:absolute;top:15px;left:20px;width:53px;height:55px;background:#ffcfac;border:3px solid #c67c58;border-radius:43% 43% 48% 48%;z-index:2}
+.eye{position:absolute;top:20px;width:10px;height:12px;border-radius:50%;background:#42a5ee;border:2px solid #2466a7}
+.eye:after{content:"";position:absolute;top:1px;left:1px;width:3px;height:4px;background:white}
+.eye.left{left:8px}.eye.right{right:8px}
+.blush{position:absolute;top:37px;width:10px;height:5px;border-radius:50%;background:#ff8db6}
+.blush.left{left:2px}.blush.right{right:2px}
+.mouth{position:absolute;top:39px;left:21px;width:8px;height:5px;border-bottom:2px solid #9a4d50;border-radius:50%}
+.strand{position:absolute;top:0;left:34px;width:18px;height:40px;background:#75422e;border-radius:0 0 70% 40%;transform:rotate(12deg);z-index:3}
+.bodygirl{position:absolute;top:65px;left:21px;width:51px;height:48px;background:#ff3eaa;border:3px solid #ce2788;border-radius:9px 9px 3px 3px;z-index:2}
+.arm{position:absolute;top:70px;width:12px;height:36px;background:#ffcfac;border:2px solid #c67c58;border-radius:8px;z-index:1}
+.arm.left{left:13px;transform:rotate(10deg)}.arm.right{right:13px;transform:rotate(-10deg)}
+.leg{position:absolute;top:108px;width:20px;height:32px;background:#468be7;border:3px solid #2864bd;z-index:2}
+.leg.left{left:27px}.leg.right{right:27px}
+.shoe{position:absolute;top:135px;width:27px;height:14px;background:#ff75c3;border:3px solid #d8439a;border-radius:8px 8px 3px 3px;z-index:3}
+.shoe.left{left:20px}.shoe.right{right:20px}
+#dialogue{position:fixed;z-index:30;left:50%;bottom:83px;transform:translateX(-50%);width:min(88vw,410px);padding:12px 14px;background:#fff7fb;border:3px solid #f080b8;border-radius:12px;box-shadow:0 5px #e8a2c6;text-align:center;font-size:14px;font-weight:bold;line-height:1.5;display:none;pointer-events:none}
+#dialogue.show{display:block;animation:pop .2s ease-out}
+#dialogue:after{content:"";position:absolute;bottom:-10px;left:50%;width:14px;height:14px;background:#fff7fb;border-right:3px solid #f080b8;border-bottom:3px solid #f080b8;transform:translateX(-50%) rotate(45deg)}
+@keyframes pop{from{opacity:0;transform:translate(-50%,8px)}to{opacity:1;transform:translate(-50%,0)}}
+#bottom{height:60px;background:#ffb6d8;border-top:4px solid #ee91bd;display:flex;align-items:center;justify-content:center;gap:13px}
+.dot{border:2px solid #e88bb8;border-radius:9px;padding:7px 10px;background:#fff5fa;font-size:12px;font-family:inherit}
+.dot.active{background:#ed66a8;color:white;border-color:white}
+#hint{position:absolute;top:8px;right:8px;background:#fff8fc;border:2px solid #f3a5cb;border-radius:7px;padding:5px;font-size:9px;z-index:15}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="logo">♡ YOUR PIXEL GAME ♡</div>
+    <div class="small">ta petite maison kawaii</div>
+  </div>
+  <div class="modeinfo">
+    <div id="modeText">Mode fille 👧</div>
+    <div id="modeHelp">Déplace la fille</div>
+  </div>
+  <button id="modeButton" aria-label="Changer le mode">🪑</button>
+</header>
+
+<div id="viewport">
+  <div id="house">
+    <section class="room">
+      <div class="wall"></div><div class="floor"></div>
+      <div class="roomname">♡ SALON ♡</div>
+      <div class="window"></div><div class="sun">☀️</div>
+      <div class="item" style="left:8%;top:55%"><span class="emoji">🛋️</span><label>Canapé</label></div>
+      <div class="item" style="left:65%;top:58%"><span class="emoji">🪴</span><label>Plante</label></div>
+      <div class="item" style="left:42%;top:69%"><span class="emoji">🧸</span><label>Peluchou</label></div>
+      <div class="girl" aria-label="La fille">
+        <div class="hair"></div><div class="face"><i class="eye left"></i><i class="eye right"></i><i class="blush left"></i><i class="blush right"></i><i class="mouth"></i></div><div class="strand"></div>
+        <div class="arm left"></div><div class="arm right"></div><div class="bodygirl"></div><div class="leg left"></div><div class="leg right"></div><div class="shoe left"></div><div class="shoe right"></div>
+      </div>
+    </section>
+    <section class="room">
+      <div class="wall"></div><div class="floor"></div>
+      <div class="roomname">♡ CHAMBRE ♡</div>
+      <div class="window"></div><div class="sun">🌙</div>
+      <div class="item" style="left:8%;top:51%"><span class="emoji">🛏️</span><label>Lit</label></div>
+      <div class="item" style="left:66%;top:57%"><span class="emoji">🧸</span><label>Ours</label></div>
+      <div class="item" style="left:45%;top:69%"><span class="emoji">🎀</span><label>Ruban</label></div>
+      <div class="girl" aria-label="La fille">
+        <div class="hair"></div><div class="face"><i class="eye left"></i><i class="eye right"></i><i class="blush left"></i><i class="blush right"></i><i class="mouth"></i></div><div class="strand"></div>
+        <div class="arm left"></div><div class="arm right"></div><div class="bodygirl"></div><div class="leg left"></div><div class="leg right"></div><div class="shoe left"></div><div class="shoe right"></div>
+      </div>
+    </section>
+    <section class="room">
+      <div class="wall"></div><div class="floor"></div>
+      <div class="roomname">♡ CUISINE ♡</div>
+      <div class="window"></div><div class="sun">✨</div>
+      <div class="item" style="left:8%;top:54%"><span class="emoji">🧊</span><label>Frigo</label></div>
+      <div class="item" style="left:63%;top:58%"><span class="emoji">🍰</span><label>Gâteau</label></div>
+      <div class="item" style="left:40%;top:69%"><span class="emoji">🍓</span><label>Fraise</label></div>
+      <div class="girl" aria-label="La fille">
+        <div class="hair"></div><div class="face"><i class="eye left"></i><i class="eye right"></i><i class="blush left"></i><i class="blush right"></i><i class="mouth"></i></div><div class="strand"></div>
+        <div class="arm left"></div><div class="arm right"></div><div class="bodygirl"></div><div class="leg left"></div><div class="leg right"></div><div class="shoe left"></div><div class="shoe right"></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div id="dialogue" role="status"></div>
+
+<div id="bottom">
+  <button class="dot active" data-room="0">Salon</button>
+  <button class="dot" data-room="1">Chambre</button>
+  <button class="dot" data-room="2">Cuisine</button>
+</div>
+
+<script>
+const viewport
+</script>
+</body>
+</html>
